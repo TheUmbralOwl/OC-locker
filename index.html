@@ -1,1 +1,411 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A personal journal of original characters, forgotten histories, and fictional worlds.">
+  <title>The Character Archives</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #eee4cf;
+      --paper-dark: #d8c9ad;
+      --ink: #29251e;
+      --muted: #716858;
+      --wine: #713b3c;
+      --line: #c8b89b;
+      --bg: #201d19;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .paper {
+      width: min(1080px, 94%);
+      margin: 32px auto;
+      background: var(--paper);
+      border: 1px solid #9b896e;
+      box-shadow: 0 12px 50px #0007;
+    }
+
+    header {
+      padding: 24px 7%;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      color: var(--wine);
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .brand {
+      font-family: "IM Fell English", Georgia, serif;
+      font-size: clamp(30px, 5vw, 48px);
+      margin: 5px 0;
+      line-height: 1.15;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 25px;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--wine);
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      padding: 0 7% 55px;
+    }
+
+    .hero {
+      padding: 70px 0 55px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero h2 {
+      max-width: 680px;
+      font-family: "IM Fell English", Georgia, serif;
+      font-size: clamp(36px, 6vw, 60px);
+      line-height: 1.12;
+      font-weight: 400;
+      margin: 14px 0;
+    }
+
+    .hero p {
+      max-width: 580px;
+      color: #554c3e;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 9px 18px;
+      background: var(--wine);
+      color: var(--paper);
+      text-decoration: none;
+      border: 1px solid var(--wine);
+    }
+
+    .button:hover {
+      background: #4e292b;
+    }
+
+    section {
+      padding-top: 42px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 22px;
+    }
+
+    h3 {
+      font-family: "IM Fell English", Georgia, serif;
+      font-size: 30px;
+      font-weight: 400;
+      margin: 0 0 10px;
+    }
+
+    .section-note {
+      color: var(--muted);
+      font-size: 14px;
+      font-style: italic;
+    }
+
+    .character-grid,
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .character {
+      min-width: 0;
+      padding: 12px;
+      border: 1px solid var(--line);
+      background: #e8dcc4;
+    }
+
+    .portrait {
+      aspect-ratio: 4 / 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 15px;
+      background: var(--paper-dark);
+      color: var(--muted);
+      border: 1px dashed #a99779;
+      font-style: italic;
+    }
+
+    .character h4 {
+      font-family: "IM Fell English", Georgia, serif;
+      font-size: 25px;
+      margin: 12px 0 3px;
+      font-weight: 400;
+    }
+
+    .tag {
+      color: var(--wine);
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .character p {
+      margin: 8px 0;
+      font-size: 16px;
+    }
+
+    .text-link {
+      color: var(--wine);
+      font-weight: 600;
+    }
+
+    .entry {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .entry h4 {
+      font-family: "IM Fell English", Georgia, serif;
+      font-size: 23px;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    .entry p {
+      margin: 7px 0;
+    }
+
+    .relationship {
+      padding: 18px;
+      border-left: 3px solid var(--wine);
+      background: #e4d6bc;
+      margin: 15px 0;
+    }
+
+    .relationship strong {
+      color: var(--wine);
+    }
+
+    .gallery-item {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 12px;
+      border: 1px dashed #a99779;
+      background: var(--paper-dark);
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    footer {
+      padding: 24px 7%;
+      border-top: 1px solid var(--line);
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 650px) {
+      .paper {
+        width: 100%;
+        margin: 0;
+        border: 0;
+      }
+
+      .character-grid,
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      main {
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+
+      .hero {
+        padding-top: 45px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .character-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="paper">
+    <header>
+      <div class="eyebrow">A private collection of imaginary things</div>
+      <h1 class="brand">The Character Archives</h1>
+      <div class="section-note">Vol. I · An ongoing study of fictional lives</div>
+
+      <nav aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#characters">Characters</a>
+        <a href="#lore">Lore & History</a>
+        <a href="#relationships">Connections</a>
+        <a href="#gallery">Gallery</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="eyebrow">Opening the journal</div>
+        <h2>Every life leaves a story behind.</h2>
+        <p>
+          A growing archive of original characters, distant worlds,
+          unfinished histories, and the strange connections between them.
+          Each entry holds a life worth remembering.
+        </p>
+        <a class="button" href="#characters">Explore the archives →</a>
+      </section>
+
+      <section id="characters">
+        <div class="section-heading">
+          <h3>Character Index</h3>
+          <span class="section-note">A selection of recorded lives</span>
+        </div>
+
+        <div class="character-grid">
+          <article class="character">
+            <div class="portrait">Portrait goes here</div>
+            <div class="tag">Entry No. 001</div>
+            <h4>First Character</h4>
+            <p>A brief introduction to this character's life, nature, and place in the world.</p>
+            <a class="text-link" href="#lore">Read their story →</a>
+          </article>
+
+          <article class="character">
+            <div class="portrait">Portrait goes here</div>
+            <div class="tag">Entry No. 002</div>
+            <h4>Second Character</h4>
+            <p>A note on their history, their ambitions, and the secrets they keep.</p>
+            <a class="text-link" href="#lore">Read their story →</a>
+          </article>
+
+          <article class="character">
+            <div class="portrait">Portrait goes here</div>
+            <div class="tag">Entry No. 003</div>
+            <h4>Third Character</h4>
+            <p>An unfinished record awaiting further research and discovery.</p>
+            <a class="text-link" href="#lore">Read their story →</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="lore">
+        <div class="section-heading">
+          <h3>Collected Histories</h3>
+          <span class="section-note">Worlds, events, and forgotten truths</span>
+        </div>
+
+        <article class="entry">
+          <div class="eyebrow">Historical Record · 001</div>
+          <h4>The World Before</h4>
+          <p>Describe the world as it was before the events of your story began.</p>
+        </article>
+
+        <article class="entry">
+          <div class="eyebrow">Incident Report · 002</div>
+          <h4>The Turning Point</h4>
+          <p>Record the event that changed everything for your characters.</p>
+        </article>
+
+        <article class="entry">
+          <div class="eyebrow">Unverified Account · 003</div>
+          <h4>Things Left Unanswered</h4>
+          <p>Some questions remain open. Perhaps they are better left that way.</p>
+        </article>
+      </section>
+
+      <section id="relationships">
+        <div class="section-heading">
+          <h3>Known Connections</h3>
+          <span class="section-note">A study of bonds and rivalries</span>
+        </div>
+
+        <div class="relationship">
+          <strong>Character A ↔ Character B</strong>
+          <p>Relationship: Friends, rivals, family, or something more complicated.</p>
+        </div>
+
+        <div class="relationship">
+          <strong>Character B → Character C</strong>
+          <p>Relationship: What one character thinks of the other may not be mutual.</p>
+        </div>
+      </section>
+
+      <section id="gallery">
+        <div class="section-heading">
+          <h3>Illustrations & Artifacts</h3>
+          <span class="section-note">Visual records</span>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item">Character sketches</div>
+          <div class="gallery-item">Important objects</div>
+          <div class="gallery-item">World illustrations</div>
+        </div>
+        <p class="section-note">
+          Artwork will be added to this collection as the archive grows.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <div>THE CHARACTER ARCHIVES</div>
+      <div>All characters and fictional worlds belong to their creator.</div>
+      <div>Established 2026 · End of current record</div>
+    </footer>
+  </div>
+</body>
+</html>
